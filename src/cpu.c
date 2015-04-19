@@ -4,7 +4,12 @@
  * Klaus Borges (7896740)
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <semaphore.h>
 #include "../include/cpu.h"
+#include "../include/units.h"
 
 unsigned int pc, cycle, A, B, IR, ALUOut, MDR;
 unsigned int registers[N_REGISTERS];
@@ -33,3 +38,20 @@ void cpu_start() {
   /* Points the stack pointer to the last memory position */
   RG_SP = STACK_START;
 }
+
+void *cpu_run() {
+  printf("CPU thread running.\n");
+
+  pthread_t control_unit_thread;
+
+  if (pthread_create(&control_unit_thread, 0, &control_unit, 0)) {
+    fprintf(stderr, "Error creating control unit thread. Exiting.\n");
+  }
+
+  pthread_join(control_unit_thread, 0);
+
+  printf("CPU thread finished.\n");
+
+  pthread_exit(0);
+}
+

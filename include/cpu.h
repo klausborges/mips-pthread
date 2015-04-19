@@ -8,11 +8,12 @@
 #define CPU_H
 
 #include "../include/registers.h"
+#include <semaphore.h>
 
-/* Program counter, read-only */
+/* Program counter, should be read-only for all threads except the main one */
 extern unsigned int pc;
 
-/* Cycle counter */
+/* Cycle counter, should be read-only for all thrads except the main one */
 extern unsigned int cycle;
 
 /* Registers array */
@@ -54,6 +55,10 @@ extern unsigned int MDR;     /* memory data register */
 
 extern unsigned int memory[MEMORY_SIZE];
 
+/* Main thread semaphore
+ * Indicates a new cycle is running for the unit threads to start working */
+extern sem_t sem_cycle;
+
 
 
 /* Functions */
@@ -61,5 +66,10 @@ extern unsigned int memory[MEMORY_SIZE];
 /* cpu_start
  * Initializes the CPU setting up the starting values */
 void cpu_start();
+
+/* cpu_run
+ * Function for the main thread of the program, runs all the instructions
+ * of a program */
+void *cpu_run();
 
 #endif

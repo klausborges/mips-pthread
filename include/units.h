@@ -4,6 +4,10 @@
  * Klaus Borges (7986740)
 */
 
+#ifndef UNITS_H
+#define UNITS_H
+
+#include <pthread.h>
 
 /* control_unit
  * Manages the signals that guide every other unit, and the state */
@@ -73,3 +77,5 @@ void *shifter_alusrcb_unit();
  * Enables writing PC if the following logical expression evaluates to true:
  * (PCWriteCond AND ??) || PCWrite) */
 void *pcwrite_condition_unit();
+
+#endif
