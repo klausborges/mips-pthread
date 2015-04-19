@@ -46,8 +46,14 @@ extern unsigned int IR;      /* instruction register */
 extern unsigned int ALUOut;
 extern unsigned int MDR;     /* memory data register */
 
-/* Memory size is arbitrary, 128KiB divided words (4 bytes ea.) */
-#define MEMORY_SIZE (1<<20)/4
+/* Memory size is arbitrary, 128KiB divided words (4 bytes ea.),
+ * which equals to 32768 memory positions. */
+#define MEMORY_SIZE (128<<10)/4
+
+#define STACK_START MEMORY_SIZE-1
+
+extern unsigned int memory[MEMORY_SIZE];
+
 
 
 /* Functions */

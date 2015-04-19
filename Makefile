@@ -18,11 +18,15 @@ instructions.o:
 cpu.o:
 	$(GCC) $(CFLAGS) -c $(SRC)/cpu.c -o $(OBJ)/cpu.o
 
+units.o:
+	$(GCC) $(CFLAGS) -c $(SRC)/units.c -o $(OBJ)/units.o
+
 test.o:
 	$(GCC) $(CFLAGS) -c $(SRC)/test.c -o $(OBJ)/test.o
 
-test: test.o instructions.o registers.o
-	$(GCC) $(CFLAGS) $(OBJ)/instructions.o $(OBJ)/test.o -o $(BIN)/test
+test: test.o instructions.o cpu.o
+	$(GCC) $(CFLAGS) $(OBJ)/instructions.o $(OBJ)/cpu.o \
+		$(OBJ)/test.o -o $(BIN)/test
 
 clean:
 	rm -v $(OBJ)/*.o
