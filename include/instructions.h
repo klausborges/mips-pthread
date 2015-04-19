@@ -37,8 +37,15 @@
 #define FN_OR       37
 #define FN_SLT      42
 
-/* Masks */
-#define FN_MASK   0x3f
+/* Masks to get certain fields from the binary instructions
+ *
+ *        Field         Hex mask                                 Binary mask */
+#define FN_MASK       0x0000003F  /* 0000 0000 0000 0000 0000 0000 0011 1111 */
+#define RS_MASK       0x03E00000  /* 0000 0011 1110 0000 0000 0000 0000 0000 */
+#define RT_MASK       0x001F0000  /* 0000 0000 0001 1111 0000 0000 0000 0000 */
+#define RD_MASK       0x0000F800  /* 0000 0000 0000 0000 1111 1000 0000 0000 */
+#define TARGET_MASK   0x03FFFFFF  /* 0000 0011 1111 1111 1111 1111 1111 1111 */
+#define OFFSET_MASK   0x0000FFFF  /* 0000 0000 0000 0000 1111 1111 1111 1111 */
 
 
 
@@ -50,6 +57,26 @@ unsigned int get_instruction_opcode(unsigned long);
 
 /* get_instruction_fncode
  * Returns the function code of an instruction */
-unsigned int get_instruction_fncode(unsigned long inst);
+unsigned int get_instruction_fncode(unsigned long);
+
+/* get_instruction_rs
+ * Returns the number of the rs register of an instruction */
+unsigned int get_instruction_rs(unsigned long);
+
+/* get_instruction_rt
+ * Returns the number of the rt register of an instruction */
+unsigned int get_instruction_rt(unsigned long);
+
+/* get_instruction_rd
+ * Returns the number of the rd register of an instruction */
+unsigned int get_instruction_rd(unsigned long);
+
+/* get_instruction_target
+ * Returns the target address for the jump instruction */
+unsigned long get_instruction_target(unsigned long);
+
+/* get_instruction_offset
+ * Returns the offset for the load, store and branch if equal instructions */
+unsigned int get_instruction_offset(unsigned long);
 
 #endif
