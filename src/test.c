@@ -13,7 +13,7 @@ int main(int argc, char **argv) {
   printf("Decoding %x: %u\n", (int) i_add, get_instruction_fncode(i_add));
   printf("Decoding %x: %u\n", (int) i_slt, get_instruction_fncode(i_slt));
 
-  unsigned long i_test = 0x04444010;
+  unsigned long i_test = 0x89abcdef;
   printf("Decoding %x:\n", (unsigned int) i_test);
   printf("     Opcode: %u\n", get_instruction_opcode(i_test));
   printf("         RS: %u\n", get_instruction_rs(i_test));

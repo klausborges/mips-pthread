@@ -7,6 +7,9 @@
 #ifndef REGISTERS_H
 #define REGISTERS_H
 
+/* Defines the number of registers */
+#define N_REGISTERS 32
+
 /* Register descriptions taken from Patterson and Hennessy's Computer
  * Organization and Design Appendix A. */
 
