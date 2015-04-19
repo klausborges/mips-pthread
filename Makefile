@@ -9,20 +9,20 @@ SRC=src
 
 all: main
 
-registers:
-	$(GCC) $(CFLAGS) -c $(SRC)/registers.c -o $(OBJ)/registers.o
+registers.o:
+	$(GCC) $(CFLAGS) -c $(INC)/registers.h  -o $(OBJ)/registers.o
 
-instructions:
+instructions.o:
 	$(GCC) $(CFLAGS) -c $(SRC)/instructions.c -o $(OBJ)/instructions.o
 
-cpu:
+cpu.o:
 	$(GCC) $(CFLAGS) -c $(SRC)/cpu.c -o $(OBJ)/cpu.o
 
-main:
+test.o:
 	$(GCC) $(CFLAGS) -c $(SRC)/test.c -o $(OBJ)/test.o
 
-test: main instructions
-	gcc $(OBJ)/instructions.o $(OBJ)/test.o -o $(BIN)/test
+test: test.o instructions.o registers.o
+	$(GCC) $(CFLAGS) $(OBJ)/instructions.o $(OBJ)/test.o -o $(BIN)/test
 
 clean:
 	rm -v $(OBJ)/*.o

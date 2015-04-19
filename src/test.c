@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../include/instructions.h"
+#include "../include/registers.h"
 
 int main(int argc, char **argv) {
   printf("Running tests");
