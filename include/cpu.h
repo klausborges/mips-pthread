@@ -10,13 +10,13 @@
 #include "../include/registers.h"
 
 /* Program counter, read-only */
-extern unsigned long pc;
+extern unsigned int pc;
 
 /* Cycle counter */
 extern unsigned int cycle;
 
 /* Registers array */
-extern unsigned long registers[N_REGISTERS];
+extern unsigned int registers[N_REGISTERS];
 
 /* Control signals */
 #define PCWriteCond 0
@@ -45,6 +45,9 @@ extern unsigned int B;
 extern unsigned int IR;      /* instruction register */
 extern unsigned int ALUOut;
 extern unsigned int MDR;     /* memory data register */
+
+/* Memory size is arbitrary, 128KiB divided words (4 bytes ea.) */
+#define MEMORY_SIZE (1<<20)/4
 
 
 /* Functions */

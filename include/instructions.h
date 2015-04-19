@@ -53,30 +53,30 @@
 
 /* get_instruction_opcode
  * Returns the decimal opcode of an instruction */
-unsigned int get_instruction_opcode(unsigned long);
+unsigned int get_instruction_opcode(unsigned int);
 
 /* get_instruction_fncode
  * Returns the function code of an instruction */
-unsigned int get_instruction_fncode(unsigned long);
+unsigned int get_instruction_fncode(unsigned int);
 
 /* get_instruction_rs
  * Returns the number of the rs register of an instruction */
-unsigned int get_instruction_rs(unsigned long);
+unsigned int get_instruction_rs(unsigned int);
 
 /* get_instruction_rt
  * Returns the number of the rt register of an instruction */
-unsigned int get_instruction_rt(unsigned long);
+unsigned int get_instruction_rt(unsigned int);
 
 /* get_instruction_rd
  * Returns the number of the rd register of an instruction */
-unsigned int get_instruction_rd(unsigned long);
+unsigned int get_instruction_rd(unsigned int);
 
 /* get_instruction_target
  * Returns the target address for the jump instruction */
-unsigned long get_instruction_target(unsigned long);
+unsigned int get_instruction_target(unsigned int);
 
 /* get_instruction_offset
  * Returns the offset for the load, store and branch if equal instructions */
-unsigned int get_instruction_offset(unsigned long);
+unsigned int get_instruction_offset(unsigned int);
 
 #endif

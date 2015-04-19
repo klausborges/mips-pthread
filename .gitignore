@@ -1,5 +1,7 @@
 # Extra files
 *.swp
+bin/test
+src/test.c
 
 # Object files
 *.o

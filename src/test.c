@@ -2,6 +2,9 @@
 #include "../include/instructions.h"
 #include "../include/registers.h"
 
+#define MEMORY_SIZE2 (128<<10)/8
+#define MEMORY_SIZE (1<<20)/4
+
 int main(int argc, char **argv) {
   printf("Running tests");
 
@@ -24,6 +27,11 @@ int main(int argc, char **argv) {
   unsigned long t_test = 0x031F0FFF;
   printf("Decoding %x: %lu\n", (unsigned int) t_test,
       get_instruction_target(t_test));
+
+  int memory[MEMORY_SIZE];
+  int i;
+  for (i = i; i < MEMORY_SIZE; i++) memory[i] = i;
+  printf("%d %d\n", memory[0], memory[MEMORY_SIZE-1]);
 
   return 0;
 }
