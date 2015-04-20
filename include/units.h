@@ -9,6 +9,11 @@
 
 #include <pthread.h>
 
+/* Defines the number of units */
+#define N_UNITS 13
+
+
+
 /* control_unit
  * Manages the signals that guide every other unit, and the state */
 void *control_unit();

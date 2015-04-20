@@ -2,13 +2,14 @@
  * Trabalho de SO I
  * Simulador de MIPS multithreaded
  * Klaus Borges (7986740)
-*/
+ */
 
 #ifndef CPU_H
 #define CPU_H
 
 #include "../include/registers.h"
 #include <semaphore.h>
+#include <pthread.h>
 
 /* Program counter, should be read-only for all threads except the main one */
 extern unsigned int pc;
@@ -57,8 +58,14 @@ extern unsigned int memory[MEMORY_SIZE];
 
 /* Main thread semaphore
  * Indicates a new cycle is running for the unit threads to start working */
-extern sem_t sem_cycle;
+extern pthread_mutex_t m_cond;
+extern pthread_cond_t c_wait_for_broadcast;
 
+extern pthread_barrier_t b_wait_for_units;
+extern pthread_barrier_t b_wait_for_control_unit;
+
+/* */
+extern int cpu_loading_threads;
 
 
 /* Functions */
@@ -71,5 +78,9 @@ void cpu_start();
  * Function for the main thread of the program, runs all the instructions
  * of a program */
 void *cpu_run();
+
+/* cpu_exit
+ * Ends all CPU activity, prints out status and frees used memory */
+void cpu_exit();
 
 #endif
